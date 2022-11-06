@@ -1,0 +1,43 @@
+# Project: analise-de-dados
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = analysis.o books.o file_manager.o linked_list.o node_ll.o main.o
+LINKOBJ  = analysis.o books.o file_manager.o linked_list.o node_ll.o main.o
+LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = analise-de-dados.exe
+CXXFLAGS = $(CXXINCS) -std=c++11 -std=c++11
+CFLAGS   = $(INCS) -std=c++11 -std=c++11
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+analysis.o: analysis.cpp
+	$(CPP) -c analysis.cpp -o analysis.o $(CXXFLAGS)
+
+books.o: books.cpp
+	$(CPP) -c books.cpp -o books.o $(CXXFLAGS)
+
+file_manager.o: file_manager.cpp
+	$(CPP) -c file_manager.cpp -o file_manager.o $(CXXFLAGS)
+
+linked_list.o: linked_list.cpp
+	$(CPP) -c linked_list.cpp -o linked_list.o $(CXXFLAGS)
+
+node_ll.o: node_ll.cpp
+	$(CPP) -c node_ll.cpp -o node_ll.o $(CXXFLAGS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)

@@ -1,3 +1,5 @@
+#ifndef __BOOKS_H__
+#define __BOOKS_H__
 #include <string>
 
 struct Book{
@@ -11,3 +13,5 @@ struct Book{
     std::string isbn;
     bool basica; // bibliografia basica
 };
+
+#endif

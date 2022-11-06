@@ -18,8 +18,8 @@ public:
 		this->id.isbn = id.isbn;
 		this->prox = prox;
 	};
-	~NodeLL(){};
-
+	
+ 	~NodeLL(){ prox = nullptr; }
 	NodeLL *getProx() { return prox; };
 	struct Book getId(){ return id; };
 	
