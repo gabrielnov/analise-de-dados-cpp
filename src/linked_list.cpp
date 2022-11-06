@@ -36,7 +36,7 @@ bool LinkedList::isFull(){
 	return false;
 };
 		
-bool LinkedList::insertHead(int id){
+bool LinkedList::insertHead(struct Book id){
 	NodeLL *aux;
     if (!isFull()){
       aux = new NodeLL(id, nullptr);
@@ -51,7 +51,7 @@ bool LinkedList::insertHead(int id){
     else return false; 
 };
 
-bool LinkedList::insertTail(int id){
+bool LinkedList::insertTail(struct Book id){
 	NodeLL *aux, *pAnda;
     if (!isFull()){
       aux = new NodeLL(id, nullptr);
@@ -107,13 +107,24 @@ bool LinkedList::remove(std::string filter){
 
 void LinkedList::print(){
 	NodeLL *pAnda; 
-    std::cout << "L: [ " ;
+    std::cout << "Disciplina  ISBN   Titulo  Autor  Edicao   Cidade   Editora  Ano  Bibliografia basica" ;
+    std::cout << "--------------------------------------------------------------------------------------";
     pAnda = head;
     while (pAnda != nullptr) {
-      std::cout << pAnda->getId() << " ";
+      std::cout << pAnda->getId().disciplina << " ";
+      std::cout << pAnda->getId().isbn << " ";
+      std::cout << pAnda->getId().titulo << " ";
+      std::cout << pAnda->getId().autor << " ";
+      std::cout << pAnda->getId().edicao << " ";
+      std::cout << pAnda->getId().cidade << " ";
+      std::cout << pAnda->getId().editora << " ";
+      std::cout << pAnda->getId().ano << " ";
+      std::cout << pAnda->getId().basica << " " << std::endl; 
+
       pAnda = pAnda->getProx();
+      std::cout << "--------------------------------------------------------------------------------------";
     }
-    std::cout <<  "]\n";
+    
 }
 		
 
