@@ -113,11 +113,11 @@ void LinkedList::print(){
     
     const int disciplina_width = 32;
     const int isbn_width = 15 ;
-    const int titulo_width = 50;
+    const int titulo_width = 72;
     const int autor_width = 42;
     const int edicao_width = 3;
     const int cidade_width = 15;
-    const int editora_width = 30;
+    const int editora_width = 28;
     const int ano_width = 5;
     const int basica_width = 2;    
     const int num_flds = 9 ;
@@ -145,7 +145,7 @@ void LinkedList::print(){
     	std::cout << sep 
 		<< std::setw(disciplina_width) << pAnda->getId()->getDisciplina().substr(0,30) << sep 
 		<< std::setw(isbn_width) << pAnda->getId()->getIsbn() << sep 	   
-		<< std::setw(titulo_width) << pAnda->getId()->getTitulo().substr(0, 48) << sep 	   
+		<< std::setw(titulo_width) << pAnda->getId()->getTitulo().substr(0, 70) << sep 	   
 		<< std::setw(autor_width) << pAnda->getId()->getAutor().substr(0, 40) << sep 	   
 		<< std::setw(edicao_width) << pAnda->getId()->getEdicao() << sep 	   
 		<< std::setw(cidade_width) << pAnda->getId()->getCidade() << sep 	   
