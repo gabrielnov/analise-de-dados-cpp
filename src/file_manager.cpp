@@ -13,7 +13,6 @@ void readFile(LinkedList *ll){
 	    	
 	    	substring(line, stringArray);
 	    	
-	    	std::cout << "linha: ";	    	
 	    	for(int i = 0; i < 9; i++){
 	    		std::cout << stringArray[i] << " ";
 			}

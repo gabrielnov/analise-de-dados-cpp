@@ -36,7 +36,7 @@ bool LinkedList::isFull(){
 	return false;
 };
 		
-bool LinkedList::insertHead(struct Book id){
+bool LinkedList::insertHead(Book* id){
 	NodeLL *aux;
     if (!isFull()){
       aux = new NodeLL(id, nullptr);
@@ -51,7 +51,7 @@ bool LinkedList::insertHead(struct Book id){
     else return false; 
 };
 
-bool LinkedList::insertTail(struct Book id){
+bool LinkedList::insertTail(Book* id){
 	NodeLL *aux, *pAnda;
     if (!isFull()){
       aux = new NodeLL(id, nullptr);
@@ -76,7 +76,7 @@ NodeLL* LinkedList::search(std::string filter){
 		return nullptr;
     }else{
       pAnda = head;
-      while ((pAnda != nullptr) && ((pAnda->getId().isbn != filter) || (pAnda->getId().titulo != filter)))
+      //while ((pAnda != nullptr) && ((pAnda->getId().isbn != filter) || (pAnda->getId().titulo != filter)))
         pAnda = pAnda->getProx();
       return pAnda; 
     }
@@ -87,10 +87,10 @@ bool LinkedList::remove(std::string filter){
     if (isEmpty()) return false;
     else{
       pAnda = head;
-      while ((pAnda != nullptr) && ((pAnda->getId().isbn != filter) || (pAnda->getId().titulo != filter))){
-        pAnt = pAnda;
-        pAnda = pAnda->getProx();
-      }
+     // while ((pAnda != nullptr) && ((pAnda->getId().isbn != filter) || (pAnda->getId().titulo != filter))){
+//        pAnt = pAnda;
+//        pAnda = pAnda->getProx();
+//      }
       if (pAnda == nullptr) return false; 
       else {
       	if ((head == pAnda)) {
@@ -111,15 +111,15 @@ void LinkedList::print(){
     std::cout << "--------------------------------------------------------------------------------------";
     pAnda = head;
     while (pAnda != nullptr) {
-      std::cout << pAnda->getId().disciplina << " ";
-      std::cout << pAnda->getId().isbn << " ";
-      std::cout << pAnda->getId().titulo << " ";
-      std::cout << pAnda->getId().autor << " ";
-      std::cout << pAnda->getId().edicao << " ";
-      std::cout << pAnda->getId().cidade << " ";
-      std::cout << pAnda->getId().editora << " ";
-      std::cout << pAnda->getId().ano << " ";
-      std::cout << pAnda->getId().basica << " " << std::endl; 
+      std::cout << pAnda->getId()->getDisciplina() << " ";
+      std::cout << pAnda->getId()->getIsbn() << " ";
+      std::cout << pAnda->getId()->getTitulo() << " ";
+      std::cout << pAnda->getId()->getAutor() << " ";
+      std::cout << pAnda->getId()->getEdicao() << " ";
+      std::cout << pAnda->getId()->getCidade() << " ";
+      std::cout << pAnda->getId()->getEditora() << " ";
+      std::cout << pAnda->getId()->getAno() << " ";
+      std::cout << pAnda->getId()->getBasica() << " " << std::endl; 
 
       pAnda = pAnda->getProx();
       std::cout << "--------------------------------------------------------------------------------------";

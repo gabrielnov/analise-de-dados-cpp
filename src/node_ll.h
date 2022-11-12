@@ -2,43 +2,33 @@
 #define __NODE_LL_H__
 #include "books.h"
 
-class NodeLL 
-{
-public:
-	NodeLL(){ id = Book{}; prox = nullptr;	};
-	NodeLL(struct Book id, NodeLL* prox){
-		this->id.ano = id.ano;
-		this->id.autor = id.autor;
-		this->id.titulo = id.titulo;
-		this->id.cidade = id.cidade;
-		this->id.disciplina = id.disciplina;
-		this->id.edicao = id.edicao;
-		this->id.basica = id.basica;
-		this->id.editora = id.editora;
-		this->id.isbn = id.isbn;
-		this->prox = prox;
-	};
-	
- 	~NodeLL(){ prox = nullptr; }
-	NodeLL *getProx() { return prox; };
-	struct Book getId(){ return id; };
-	
-	void setProx(NodeLL *prox) { this->prox = prox; };
-	void setId(struct Book id) { 
-		this->id.ano = id.ano;
-		this->id.autor = id.autor;
-		this->id.titulo = id.titulo;
-		this->id.cidade = id.cidade;
-		this->id.disciplina = id.disciplina;
-		this->id.edicao = id.edicao;
-		this->id.basica = id.basica;
-		this->id.editora = id.editora;
-		this->id.isbn = id.isbn;
-	};
-	
-private:
-    struct Book id;
-	NodeLL *prox;
+class NodeLL {
+	public:
+		NodeLL(){ 
+			Book * id = new Book();
+			prox = nullptr;	
+		};
+		
+		NodeLL(Book* id, NodeLL* prox){
+			this->id = id;
+			this->prox = prox;
+		};
+		
+	 	~NodeLL(){ 
+	 		delete id;
+		 	id = nullptr;
+		 	prox = nullptr; 
+		}
+		
+		NodeLL *getProx() { return prox; };
+		Book* getId(){ return id; };
+		
+		void setProx(NodeLL *prox) { this->prox = prox; };
+		void setId(Book* id) { this->id = id;};
+		
+	private:
+	    Book* id;
+		NodeLL *prox;
 };
 
 #endif

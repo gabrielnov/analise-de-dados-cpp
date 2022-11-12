@@ -14,8 +14,8 @@ class LinkedList{
 		~LinkedList();
 		bool isEmpty();
 		bool isFull();
-		bool insertHead(struct Book id);
-		bool insertTail(struct Book id);
+		bool insertHead(Book* id);
+		bool insertTail(Book* id);
 		NodeLL *search(std::string filter);
 		bool remove(std::string filter);
 		void clear();
