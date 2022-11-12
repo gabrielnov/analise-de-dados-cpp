@@ -7,22 +7,24 @@ void readFile(LinkedList *ll){
 	
 	std::string line;
 	std::string* stringArray = new std::string[9];
-
+	
+	// Le a primeira linha com os titulos das colunas e a descarta
+	getline(f, line);
+	
 	if (f.is_open()){
 	    while(getline(f, line)){
 	    	
 	    	substring(line, stringArray);
 	    	
-	    	for(int i = 0; i < 9; i++){
-	    		std::cout << stringArray[i] << " ";
-			}
-			
-			std::cout << std::endl;
+	    	Book * b = new Book(stringArray);
+	    	ll->insertTail(b);
+	    	
+//	    	delete b;			
 	    }
 	f.close();
 	}
 	
-	delete stringArray;
+	delete[] stringArray;
 	stringArray = nullptr;
 }
 

@@ -76,7 +76,7 @@ NodeLL* LinkedList::search(std::string filter){
 		return nullptr;
     }else{
       pAnda = head;
-      //while ((pAnda != nullptr) && ((pAnda->getId().isbn != filter) || (pAnda->getId().titulo != filter)))
+      while ((pAnda != nullptr) && ((pAnda->getId()->getIsbn() != filter) || (pAnda->getId()->getTitulo() != filter)))
         pAnda = pAnda->getProx();
       return pAnda; 
     }
@@ -87,10 +87,10 @@ bool LinkedList::remove(std::string filter){
     if (isEmpty()) return false;
     else{
       pAnda = head;
-     // while ((pAnda != nullptr) && ((pAnda->getId().isbn != filter) || (pAnda->getId().titulo != filter))){
-//        pAnt = pAnda;
-//        pAnda = pAnda->getProx();
-//      }
+      while ((pAnda != nullptr) && ((pAnda->getId()->getIsbn() != filter) || (pAnda->getId()->getTitulo() != filter))){
+        pAnt = pAnda;
+        pAnda = pAnda->getProx();
+      }
       if (pAnda == nullptr) return false; 
       else {
       	if ((head == pAnda)) {
@@ -107,23 +107,59 @@ bool LinkedList::remove(std::string filter){
 
 void LinkedList::print(){
 	NodeLL *pAnda; 
-    std::cout << "Disciplina  ISBN   Titulo  Autor  Edicao   Cidade   Editora  Ano  Bibliografia basica" ;
-    std::cout << "--------------------------------------------------------------------------------------";
     pAnda = head;
+    
+    // https://cplusplus.com/forum/beginner/181119/
+    
+    const int disciplina_width = 32;
+    const int isbn_width = 15 ;
+    const int titulo_width = 50;
+    const int autor_width = 42;
+    const int edicao_width = 3;
+    const int cidade_width = 15;
+    const int editora_width = 30;
+    const int ano_width = 5;
+    const int basica_width = 2;    
+    const int num_flds = 9 ;
+    
+    const std::string sep = " |" ;
+    const int total_width = 
+			disciplina_width + isbn_width + titulo_width + autor_width + edicao_width 
+			+ cidade_width + editora_width + ano_width + basica_width + sep.size() * num_flds ;
+    
+    const std::string line = sep + std::string( total_width-1, '-' ) + '|' ;
+	
+	std::cout << line << '\n' << sep
+              << std::setw(disciplina_width) << "disciplina" << sep 
+			  << std::setw(isbn_width) << "isbn" << sep
+              << std::setw(titulo_width) << "titulo" << sep 
+			  << std::setw(autor_width) << "autor" << sep
+              << std::setw(edicao_width) << "ed" << sep 
+			  << std::setw(cidade_width) << "cidade" << sep
+              << std::setw(editora_width) << "editora" << sep 
+              << std::setw(ano_width) << "ano" << sep 
+              << std::setw(basica_width) << "b" << sep 
+			  << '\n' << line << '\n' ;
+              
     while (pAnda != nullptr) {
-      std::cout << pAnda->getId()->getDisciplina() << " ";
-      std::cout << pAnda->getId()->getIsbn() << " ";
-      std::cout << pAnda->getId()->getTitulo() << " ";
-      std::cout << pAnda->getId()->getAutor() << " ";
-      std::cout << pAnda->getId()->getEdicao() << " ";
-      std::cout << pAnda->getId()->getCidade() << " ";
-      std::cout << pAnda->getId()->getEditora() << " ";
-      std::cout << pAnda->getId()->getAno() << " ";
-      std::cout << pAnda->getId()->getBasica() << " " << std::endl; 
+    	std::cout << sep 
+		<< std::setw(disciplina_width) << pAnda->getId()->getDisciplina().substr(0,30) << sep 
+		<< std::setw(isbn_width) << pAnda->getId()->getIsbn() << sep 	   
+		<< std::setw(titulo_width) << pAnda->getId()->getTitulo().substr(0, 48) << sep 	   
+		<< std::setw(autor_width) << pAnda->getId()->getAutor().substr(0, 40) << sep 	   
+		<< std::setw(edicao_width) << pAnda->getId()->getEdicao() << sep 	   
+		<< std::setw(cidade_width) << pAnda->getId()->getCidade() << sep 	   
+		<< std::setw(editora_width) << pAnda->getId()->getEditora() << sep 	   
+		<< std::setw(ano_width) << pAnda->getId()->getAno() << sep
+		<< std::setw(basica_width) << pAnda->getId()->getBasica()  
+		<< sep << '\n' ;
 
       pAnda = pAnda->getProx();
-      std::cout << "--------------------------------------------------------------------------------------";
+      
     }
+    
+    std::cout << line << '\n' ;
+    
     
 }
 		

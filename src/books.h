@@ -1,19 +1,21 @@
 #ifndef __BOOKS_H__
 #define __BOOKS_H__
 #include <string>
+#include <iostream>
 
 class Book{
  	public:
+ 		// Recebe um array com 9 posicoes, associamos cada uma a um elemento da classe
  		Book(std::string v[9]){
  			this->disciplina = v[0];
-			this->titulo = v[1];
-			this->autor = v[2];
-			this->edicao = std::stoi(v[3]);
-			this->cidade = v[4];
-			this->editora = v[5];
-			this->ano = std::stoi(v[6]);
-			this->isbn = v[7];
-			this->disciplina = (v[0] == "S"); 			
+ 			this->isbn = v[1];
+			this->titulo = v[2];			
+			this->autor = v[3];
+			this->edicao = std::stoi(v[4]);
+			this->cidade = v[5];
+			this->editora = v[6];
+			this->ano = std::stoi(v[7]);
+			this->basica = (v[8] == "S"); 			
 		}
 		~Book(){};
 		Book(){}; 

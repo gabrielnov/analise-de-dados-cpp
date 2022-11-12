@@ -2,11 +2,11 @@
 #define __FILE_MANAGER_H__
 
 #include "linked_list.h"
-#include <stdio.h>
+
 #include <string.h>
 
 #include <fstream>
-#include <iostream>
+
 #include "books.h"
 
 const int MAX = 80;
