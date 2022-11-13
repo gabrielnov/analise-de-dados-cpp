@@ -35,5 +35,5 @@
 .vscode
 *.layout
 
-src/Makefile.win
-src/analise-de-dados.layout
+*.win
+*.layout

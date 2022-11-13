@@ -1,13 +1,9 @@
-#include "linked_list.h"
-#include "file_manager.h"
-#include "iostream"
+#include "main.h"
 
 int main(){
     LinkedList* ll = new LinkedList();
 
-    readFile(ll);
-	
-	ll->print();
+ 	menu();
 	
 	ll = nullptr;	
     return 0;

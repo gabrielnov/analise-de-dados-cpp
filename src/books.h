@@ -29,6 +29,7 @@ class Book{
 		int getAno(){return this->ano;}
 		std::string getIsbn(){return this->isbn;}
 		bool getBasica(){return this->basica;}
+		bool getNacional(){return this->nacional;}
 		
 		void setDisciplina(std::string disciplina){this->disciplina = disciplina;}
 		void setTitulo(std::string titulo){this->disciplina = disciplina;}
@@ -39,7 +40,10 @@ class Book{
 		void setDisciplina(int ano){this->ano = ano;}
 		void setIsbn(std::string isbn){this->isbn = isbn;}
 		void setDisciplina(bool basica){this->basica = basica;}
-	
+		void setNacional(bool nacional){this->nacional = nacional;}
+		
+		bool verificaNacional(std::string editora);
+		
 	private:
 		std::string disciplina;
 	    std::string titulo;
@@ -50,6 +54,7 @@ class Book{
 	    int ano;
 	    std::string isbn;
 	    bool basica; // bibliografia basica
+	    bool nacional;
 };
 
 #endif

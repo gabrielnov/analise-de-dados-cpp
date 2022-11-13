@@ -10,6 +10,8 @@
 class LinkedList{
 	private:
 		NodeLL *head;
+		int qtde;
+		int qtdeBrasileiras;
 	public:	
 		LinkedList();
 		~LinkedList();

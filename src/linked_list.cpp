@@ -4,7 +4,11 @@
 
 LinkedList::LinkedList(){
 	head = nullptr;
+	this->qtde = 0;
+	//livros publicados por editoras brasileiras
+	this->qtdeBrasileiras = 0;
 };
+
 LinkedList::~LinkedList(){
 	clear();
 };
@@ -39,14 +43,18 @@ bool LinkedList::isFull(){
 bool LinkedList::insertHead(Book* id){
 	NodeLL *aux;
     if (!isFull()){
-      aux = new NodeLL(id, nullptr);
-      if (isEmpty()){ 
-        head = aux;
-      }else { 
-      	aux->setProx(head);
-      	head = aux;
-      }
-      return true;
+    	aux = new NodeLL(id, nullptr);
+    	if (isEmpty()){ 
+        	head = aux;
+      	}else { 
+      		aux->setProx(head);
+      		head = aux;
+    	}
+    	if (id->getNacional()) 
+      		this->qtdeBrasileiras++;
+      		
+      	this->qtde++;
+        return true;
     }
     else return false; 
 };
@@ -54,16 +62,20 @@ bool LinkedList::insertHead(Book* id){
 bool LinkedList::insertTail(Book* id){
 	NodeLL *aux, *pAnda;
     if (!isFull()){
-      aux = new NodeLL(id, nullptr);
-      if (isEmpty()){ 
-        head = aux;
-      }else {
-        pAnda = head;  
-        while (pAnda->getProx() != nullptr)
-           pAnda = pAnda->getProx();
+      	aux = new NodeLL(id, nullptr);
+      	if (isEmpty()){ 
+        	head = aux;
+      	}else {
+       		pAnda = head;  
+        	while (pAnda->getProx() != nullptr)
+           		pAnda = pAnda->getProx();
         pAnda->setProx( aux );
-      }
-	  return true;
+      	}
+      	if (id->getNacional()) 
+      		this->qtdeBrasileiras++;
+      		
+    	this->qtde++;
+	  	return true;
     }
     else return false; 
 };
@@ -100,6 +112,8 @@ bool LinkedList::remove(std::string filter){
 		}
 		delete pAnda;
       	pAnda = nullptr;
+
+		// TODO diminuir a quantidade
       	return true;   
       }
     }
