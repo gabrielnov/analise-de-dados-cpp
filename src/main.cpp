@@ -3,7 +3,7 @@
 int main(){
     LinkedList* ll = new LinkedList();
 
- 	menu();
+ 	menu(ll);
 	
 	ll = nullptr;	
     return 0;

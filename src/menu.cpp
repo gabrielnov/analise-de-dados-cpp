@@ -1,53 +1,95 @@
 #include "menu.h"
 
-void menu(){
+void menu(LinkedList* ll){
 	
 	char opt;
-	bool flag;
-	Book* b;
-		
-	std::cout << "\n1. Ler dados\n"	
-	<< "2. Exibir dados\n"
-	<< "3. Salvar dados\n"
-	<< "4. Inserir livro\n"
-	<< "5. Remover livro\n"
-	<< "6. Analise de dados A\n"
-	<< "7. Analise de dados B\n"
-	<< "8. Analise de dados C\n"
-	<< "9. Encerrar\n\n"
-	<< "Digite a opcao: ";
+	bool exit = false;
 	
-	std::cin >> opt;
-
-	switch(opt){
-		case '1':
-		
-		case '2':
-			if (!flag){
-				std::cout << "Necessario ler os dados primeiro (opcao 1)";
-				menu();
-			}
-			break;
-		case '3':
-			break;
-		case '4':
-			b = readData();
-			break;
-		case '5':
-			break;
-		case '6':
-			break;
-		case '7':
-			break;
-		case '8':
-			break;
-		case '9':
-			std::cout << "Encerrando programa...";
-			exit(0);
-		default:
-			std::cout << "Opcao invalida. Tenta novamente";
-			menu();
+	while (!exit){
+		printMenu();
+		std::cin >> opt;
+		exit = readOption(opt, ll);
 	}
+}
+
+void printMenu(){
+		std::cout << "\n1. Ler dados\n"	
+		<< "2. Exibir dados\n"
+		<< "3. Salvar dados\n"
+		<< "4. Inserir livro\n"
+		<< "5. Remover livro\n"
+		<< "6. Analise de dados A\n"
+		<< "7. Analise de dados B\n"
+		<< "8. Analise de dados C\n"
+		<< "9. Encerrar\n\n"
+		<< "Digite a opcao: ";		
+}
+
+bool readOption(char opt, LinkedList* ll){
+	Book* b;
+	std::string filter;
+	
+	switch(opt){
+			case '1':
+				readFile(ll);
+				fileFlag = true;
+				break;
+			case '2':
+				if (!fileFlag){
+					std::cout << "Necessario ler os dados primeiro (opcao 1)";
+					break;
+				}
+					
+				ll->print();
+				break;
+			case '3':
+				if (!fileFlag){
+					std::cout << "Necessario ler os dados primeiro (opcao 1)";
+					break;
+				}
+				break;
+			case '4':
+				if (!fileFlag){
+					std::cout << "Necessario ler os dados primeiro (opcao 1)";
+					break;
+				}
+				b = readData();
+				ll->insertTail(b);
+				break;
+			case '5':
+				if (!fileFlag){
+					std::cout << "Necessario ler os dados primeiro (opcao 1)";
+					break;
+				}
+				std::cout << "Insira o titulo ou ISBN do livro a ser removido: ";
+				std::cin >> filter;
+				if(!ll->remove(filter)){
+					std::cout << "Ocorreu um erro ao tentar remover esse livro. Verifique se ele existe antes de remove-lo" << std::endl;
+				}
+				break;
+			case '6':
+				if (!fileFlag)
+					std::cout << "Necessario ler os dados primeiro (opcao 1)";
+				break;
+			case '7':
+				if (!fileFlag){
+					std::cout << "Necessario ler os dados primeiro (opcao 1)";
+					break;
+				}
+				break;
+			case '8':
+				if (!fileFlag){
+					std::cout << "Necessario ler os dados primeiro (opcao 1)";
+					break;
+				}
+				break;
+			case '9':
+				std::cout << "Encerrando programa...";
+				return true;
+			default:
+				std::cout << "Opcao invalida. Tenta novamente";
+		}
+	return false;
 }
 
 Book* readData(){
@@ -63,10 +105,31 @@ Book* readData(){
 		std::cout << std::endl;	
 	}
 	
+	struct Result result = validate(fields);
+	
+	
 	Book* b = new Book(sdata);
 
 	delete[] sdata;
 	sdata = nullptr;
 
 	return b;	
+}
+
+bool validate(std::string* data){
+	bool valid = true;
+	
+	struct Result result;
+	
+	for (int i = 0; i < 9; i++){
+		if(data[i]).empty()){
+			valid = false;
+			break;
+		}		
+	}
+	
+	if 
+		
+	return valid;
+	
 }

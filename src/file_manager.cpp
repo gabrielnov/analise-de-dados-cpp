@@ -1,6 +1,9 @@
 #include "file_manager.h"
 
 void readFile(LinkedList *ll){
+	
+	ll->clear();
+	
    	std::fstream f;
 	
 	f.open(FILE_PATH, std::ios::in); 
@@ -26,6 +29,8 @@ void readFile(LinkedList *ll){
 	
 	delete[] stringArray;
 	stringArray = nullptr;
+	
+	std::cout << "Dados lidos com sucesso!" << std::endl;
 }
 
 

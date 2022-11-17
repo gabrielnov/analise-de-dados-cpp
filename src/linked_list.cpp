@@ -110,6 +110,7 @@ bool LinkedList::remove(std::string filter){
 	    } else{ 
 	    	pAnt->setProx(pAnda->getProx());
 		}
+		qtde--;
 		delete pAnda;
       	pAnda = nullptr;
 
@@ -127,11 +128,11 @@ void LinkedList::print(){
     
     const int disciplina_width = 32;
     const int isbn_width = 15 ;
-    const int titulo_width = 72;
-    const int autor_width = 42;
+    const int titulo_width = 60;
+    const int autor_width = 36;
     const int edicao_width = 3;
     const int cidade_width = 15;
-    const int editora_width = 28;
+    const int editora_width = 18;
     const int ano_width = 5;
     const int basica_width = 2;    
     const int num_flds = 9 ;
@@ -159,11 +160,11 @@ void LinkedList::print(){
     	std::cout << sep 
 		<< std::setw(disciplina_width) << pAnda->getId()->getDisciplina().substr(0,30) << sep 
 		<< std::setw(isbn_width) << pAnda->getId()->getIsbn() << sep 	   
-		<< std::setw(titulo_width) << pAnda->getId()->getTitulo().substr(0, 70) << sep 	   
-		<< std::setw(autor_width) << pAnda->getId()->getAutor().substr(0, 40) << sep 	   
+		<< std::setw(titulo_width) << pAnda->getId()->getTitulo().substr(0, 58) << sep 	   
+		<< std::setw(autor_width) << pAnda->getId()->getAutor().substr(0, 34) << sep 	   
 		<< std::setw(edicao_width) << pAnda->getId()->getEdicao() << sep 	   
 		<< std::setw(cidade_width) << pAnda->getId()->getCidade() << sep 	   
-		<< std::setw(editora_width) << pAnda->getId()->getEditora() << sep 	   
+		<< std::setw(editora_width) << pAnda->getId()->getEditora().substr(0, 16) << sep 	   
 		<< std::setw(ano_width) << pAnda->getId()->getAno() << sep
 		<< std::setw(basica_width) << pAnda->getId()->getBasica()  
 		<< sep << '\n' ;
