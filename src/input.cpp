@@ -67,8 +67,8 @@ void input(Book* b){
 	while (!validYear(field)){
 		std::cout << "Ano \"" << field << "\" invalido. Tente novamente: ";
 		getline(std::cin, field);
-		b->setAno(std::stoi(field));
 	}
+	b->setAno(std::stoi(field));
 	
 	std::cout << "Bibliografia Basica (0 ou 1): ";
 	std::getline(std::cin, field);
@@ -81,7 +81,7 @@ void input(Book* b){
 
 // Verifica se o campo possui ao menos um caractere
 bool validString(std::string s){
-	return std::regex_match(s, std::regex("[1-9a-zA-Z]+")); 
+	return std::regex_match(s, std::regex("\\w+.*$")); 
 }
 
 // Verifica se o ano é válido
@@ -91,7 +91,7 @@ bool validYear(std::string s){
 
 // Verifica se a edição possui apenas digitos numericos
 bool validEdition(std::string s){
-	return std::regex_match(s, std::regex("^[+1-9]*$"));
+	return std::regex_match(s, std::regex("^[1-9]\\d*$"));
 }
 
 // Verifica se a bibliografia basica possui apenas 1 ou 0

@@ -8,13 +8,10 @@
 #include "linked_list.h"
 #include "input.h"
 
-bool fileRead = false;
-
-
 void menu(LinkedList* ll);
 Book* readData();
 void printMenu();
-bool readOption(char opt, LinkedList* ll);
+bool readOption(char opt, LinkedList* ll, bool* fileRead);
 bool validate(std::string* data);
 
 #endif

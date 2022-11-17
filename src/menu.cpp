@@ -5,12 +5,16 @@ void menu(LinkedList* ll){
 
 	char opt;
 	bool exit = false;
+	bool* fileRead = new bool(false);
 	
 	while (!exit){
 		printMenu();
 		std::cin >> opt;
-		exit = readOption(opt, ll);
+		exit = readOption(opt, ll, fileRead);
 	}
+	
+	delete fileRead;
+	fileRead = nullptr;
 }
 
 void printMenu(){
@@ -26,18 +30,17 @@ void printMenu(){
 		<< "Digite a opcao: ";		
 }
 
-bool readOption(char opt, LinkedList* ll){
+bool readOption(char opt, LinkedList* ll, bool* fileRead){
 	Book* b;
 	std::string filter;
 
-	
 	switch(opt){
 			case '1':
 				readFile(ll);
-				fileRead = true;
+				*fileRead = true;
 				break;
 			case '2':
-				if (!fileRead){
+				if (!*fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 					break;
 				}
@@ -45,13 +48,13 @@ bool readOption(char opt, LinkedList* ll){
 				ll->print();
 				break;
 			case '3':
-				if (!fileRead){
+				if (!*fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 					break;
 				}
 				break;
 			case '4':
-				if (!fileRead){
+				if (!*fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 					break;
 				}
@@ -59,7 +62,7 @@ bool readOption(char opt, LinkedList* ll){
 				ll->insertTail(b);
 				break;
 			case '5':
-				if (!fileRead){
+				if (!*fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 					break;
 				}
@@ -70,17 +73,17 @@ bool readOption(char opt, LinkedList* ll){
 				}
 				break;
 			case '6':
-				if (!fileRead)
+				if (!*fileRead)
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 				break;
 			case '7':
-				if (!fileRead){
+				if (!*fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 					break;
 				}
 				break;
 			case '8':
-				if (!fileRead){
+				if (!*fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 					break;
 				}

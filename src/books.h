@@ -32,7 +32,7 @@ class Book{
 		bool getNacional(){return this->nacional;}
 		
 		void setDisciplina(std::string disciplina){this->disciplina = disciplina;}
-		void setTitulo(std::string titulo){this->disciplina = disciplina;}
+		void setTitulo(std::string titulo){this->titulo = titulo;}
 		void setAutor(std::string autor){this->autor = autor;}
 		void setEdicao(int edicao){this->edicao = edicao;}
 		void setCidade(std::string cidade){this->cidade = cidade;}
