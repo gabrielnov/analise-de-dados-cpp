@@ -88,7 +88,7 @@ NodeLL* LinkedList::search(std::string filter){
 		return nullptr;
     }else{
       pAnda = head;
-      while ((pAnda != nullptr) && ((pAnda->getId()->getIsbn() != filter) || (pAnda->getId()->getTitulo() != filter)))
+      while ((pAnda != nullptr) && (pAnda->getId()->getIsbn() != filter) && (pAnda->getId()->getTitulo() != filter))
         pAnda = pAnda->getProx();
       return pAnda; 
     }
@@ -99,7 +99,8 @@ bool LinkedList::remove(std::string filter){
     if (isEmpty()) return false;
     else{
       pAnda = head;
-      while ((pAnda != nullptr) && ((pAnda->getId()->getIsbn() != filter) || (pAnda->getId()->getTitulo() != filter))){
+      //|| pAnda->getId()->getTitulo() != filter)
+      while ((pAnda != nullptr) && (pAnda->getId()->getIsbn() != filter) && (pAnda->getId()->getTitulo() != filter)){
         pAnt = pAnda;
         pAnda = pAnda->getProx();
       }
@@ -173,7 +174,9 @@ void LinkedList::print(){
       
     }
     
-    std::cout << line << '\n' ;
+    std::cout << line << '\n\n' ;
+    
+    std::cout << " Total: " << qtde << std::endl;
     
     
 }

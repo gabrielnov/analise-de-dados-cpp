@@ -70,6 +70,8 @@ bool readOption(char opt, LinkedList* ll, bool* fileRead){
 				std::cin >> filter;
 				if(!ll->remove(filter)){
 					std::cout << "Ocorreu um erro ao tentar remover esse livro. Verifique se ele existe antes de remove-lo" << std::endl;
+				}else{
+					std::cout << "Livro removido com sucesso!" << std::endl;
 				}
 				break;
 			case '6':
