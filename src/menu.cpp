@@ -1,7 +1,8 @@
 #include "menu.h"
 
-void menu(LinkedList* ll){
 	
+void menu(LinkedList* ll){
+
 	char opt;
 	bool exit = false;
 	
@@ -28,14 +29,15 @@ void printMenu(){
 bool readOption(char opt, LinkedList* ll){
 	Book* b;
 	std::string filter;
+
 	
 	switch(opt){
 			case '1':
 				readFile(ll);
-				fileFlag = true;
+				fileRead = true;
 				break;
 			case '2':
-				if (!fileFlag){
+				if (!fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 					break;
 				}
@@ -43,13 +45,13 @@ bool readOption(char opt, LinkedList* ll){
 				ll->print();
 				break;
 			case '3':
-				if (!fileFlag){
+				if (!fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 					break;
 				}
 				break;
 			case '4':
-				if (!fileFlag){
+				if (!fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 					break;
 				}
@@ -57,7 +59,7 @@ bool readOption(char opt, LinkedList* ll){
 				ll->insertTail(b);
 				break;
 			case '5':
-				if (!fileFlag){
+				if (!fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 					break;
 				}
@@ -68,17 +70,17 @@ bool readOption(char opt, LinkedList* ll){
 				}
 				break;
 			case '6':
-				if (!fileFlag)
+				if (!fileRead)
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 				break;
 			case '7':
-				if (!fileFlag){
+				if (!fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 					break;
 				}
 				break;
 			case '8':
-				if (!fileFlag){
+				if (!fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 					break;
 				}
@@ -93,43 +95,17 @@ bool readOption(char opt, LinkedList* ll){
 }
 
 Book* readData(){
-	std::string* sdata = new std::string[9];
-	std::string fields[9] = {"Disciplina", "ISBN", "Titulo", "Autor", "Edicao", "Cidade", "Editora", "Ano", "Bibliografia basica"};
+	
+	std::string field;
+	
 	int data, size = 9;
-	
-	std::cout << "Informe os dados do novo livro" << std::endl;
-	
-	for (int i = 0; i < size; i++){
-		std::cout << fields[i] << ": ";
-		std::cin >> sdata[i];
-		std::cout << std::endl;	
-	}
-	
-	struct Result result = validate(fields);
-	
-	
-	Book* b = new Book(sdata);
 
-	delete[] sdata;
-	sdata = nullptr;
+	std::cout << " -- Informe os dados do novo livro -- " << std::endl;
+	
+	Book* b = new Book();
+	
+	input(b);	
 
 	return b;	
 }
 
-bool validate(std::string* data){
-	bool valid = true;
-	
-	struct Result result;
-	
-	for (int i = 0; i < 9; i++){
-		if(data[i]).empty()){
-			valid = false;
-			break;
-		}		
-	}
-	
-	if 
-		
-	return valid;
-	
-}

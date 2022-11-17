@@ -37,9 +37,9 @@ class Book{
 		void setEdicao(int edicao){this->edicao = edicao;}
 		void setCidade(std::string cidade){this->cidade = cidade;}
 		void setEditora(std::string editora){this->editora = editora;}
-		void setDisciplina(int ano){this->ano = ano;}
+		void setAno(int ano){this->ano = ano;}
 		void setIsbn(std::string isbn){this->isbn = isbn;}
-		void setDisciplina(bool basica){this->basica = basica;}
+		void setBasica(bool basica){this->basica = basica;}
 		void setNacional(bool nacional){this->nacional = nacional;}
 		
 		bool verificaNacional(std::string editora);

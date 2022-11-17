@@ -3,7 +3,7 @@
 
 #include "linked_list.h"
 
-#include <string.h>
+#include <string>
 
 #include <fstream>
 
