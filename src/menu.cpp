@@ -75,20 +75,25 @@ bool readOption(char opt, LinkedList* ll, bool* fileRead){
 				}
 				break;
 			case '6':
-				if (!*fileRead)
+				if (!*fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
+					break;
+				}
+				analysisA(ll);
 				break;
 			case '7':
 				if (!*fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 					break;
 				}
+				analysisB(ll);
 				break;
 			case '8':
 				if (!*fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 					break;
 				}
+				analysisC(ll);
 				break;
 			case '9':
 				std::cout << "Encerrando programa...";

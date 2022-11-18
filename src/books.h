@@ -15,7 +15,7 @@ class Book{
 			this->cidade = v[5];
 			this->editora = v[6];
 			this->ano = std::stoi(v[7]);
-			this->basica = (v[8] == "S"); 			
+			this->basica = std::toupper(v[8][0]);			
 		}
 		~Book(){};
 		Book(){}; 
@@ -28,7 +28,7 @@ class Book{
 		std::string getEditora(){return this->editora;}
 		int getAno(){return this->ano;}
 		std::string getIsbn(){return this->isbn;}
-		bool getBasica(){return this->basica;}
+		char getBasica(){return this->basica;}
 		bool getNacional(){return this->nacional;}
 		
 		void setDisciplina(std::string disciplina){this->disciplina = disciplina;}
@@ -39,7 +39,7 @@ class Book{
 		void setEditora(std::string editora){this->editora = editora;}
 		void setAno(int ano){this->ano = ano;}
 		void setIsbn(std::string isbn){this->isbn = isbn;}
-		void setBasica(bool basica){this->basica = basica;}
+		void setBasica(char basica){this->basica = basica;}
 		void setNacional(bool nacional){this->nacional = nacional;}
 		
 		bool verificaNacional(std::string editora);
@@ -53,7 +53,7 @@ class Book{
 	    std::string editora;
 	    int ano;
 	    std::string isbn;
-	    bool basica; // bibliografia basica
+	    char basica; // bibliografia basica
 	    bool nacional;
 };
 

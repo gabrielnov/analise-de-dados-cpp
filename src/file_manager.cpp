@@ -20,6 +20,9 @@ void readFile(LinkedList *ll){
 	    	substring(line, stringArray);
 	    	
 	    	Book * b = new Book(stringArray);
+	    	bool nacional = b->verificaNacional(stringArray[5]);
+	    	b->setNacional(nacional);
+	    	
 	    	ll->insertTail(b);
 	    	
 //	    	delete b;			

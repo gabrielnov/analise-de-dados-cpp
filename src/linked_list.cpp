@@ -11,6 +11,8 @@ LinkedList::LinkedList(){
 
 LinkedList::~LinkedList(){
 	clear();
+	qtde = 0;
+	qtdeBrasileiras = 0;
 };
 
 void LinkedList::clear(){
@@ -51,9 +53,9 @@ bool LinkedList::insertHead(Book* id){
       		head = aux;
     	}
     	if (id->getNacional()) 
-      		this->qtdeBrasileiras++;
+      		qtdeBrasileiras++;
       		
-      	this->qtde++;
+      	qtde++;
         return true;
     }
     else return false; 
@@ -72,9 +74,9 @@ bool LinkedList::insertTail(Book* id){
         pAnda->setProx( aux );
       	}
       	if (id->getNacional()) 
-      		this->qtdeBrasileiras++;
+      		qtdeBrasileiras++;
       		
-    	this->qtde++;
+    	qtde++;
 	  	return true;
     }
     else return false; 
@@ -106,16 +108,17 @@ bool LinkedList::remove(std::string filter){
       }
       if (pAnda == nullptr) return false; 
       else {
+      	if (pAnda->getId()->getNacional()) 
+		  qtdeBrasileiras--;
       	if ((head == pAnda)) {
 		  head = pAnda->getProx();
 	    } else{ 
 	    	pAnt->setProx(pAnda->getProx());
 		}
-		qtde--;
 		delete pAnda;
       	pAnda = nullptr;
-
-		// TODO diminuir a quantidade
+		
+		qtde--;
       	return true;   
       }
     }
@@ -174,7 +177,7 @@ void LinkedList::print(){
       
     }
     
-    std::cout << line << '\n\n' ;
+    std::cout << line << "\n\n";
     
     std::cout << " Total: " << qtde << std::endl;
     

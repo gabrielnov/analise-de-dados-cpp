@@ -7,6 +7,7 @@
 #include "file_manager.h"
 #include "linked_list.h"
 #include "input.h"
+#include "analysis.h"
 
 void menu(LinkedList* ll);
 Book* readData();

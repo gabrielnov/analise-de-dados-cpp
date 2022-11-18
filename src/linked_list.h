@@ -26,6 +26,10 @@ class LinkedList{
 		
 		NodeLL* getHead(void){ return head; };
 		void setHead(NodeLL *head) { this->head = head;	}
+		void setQtde(int qtde){ this->qtde = qtde;}
+		void setQtdeBrasileiras(int qtdeBrasileiras){ this->qtde = qtdeBrasileiras;}
+		int getQtde(){return qtde;}
+		int getQtdeBrasileiras(){return qtdeBrasileiras;}
 };
 
 #endif

@@ -70,13 +70,16 @@ void input(Book* b){
 	}
 	b->setAno(std::stoi(field));
 	
-	std::cout << "Bibliografia Basica (0 ou 1): ";
+	std::cout << "Bibliografia Basica: ";
 	std::getline(std::cin, field);
 	while (!validBool(field)){
 		std::cout << "Bibliografia Basica \"" << field << "\"  invalida. Tente novamente: ";
 		getline(std::cin, field);
 	}
-	b->setBasica(field == "S");
+	b->setBasica(std::toupper(field[0]));
+	
+	bool nacional = b->verificaNacional(b->getCidade());
+	b->setNacional(nacional);
 }
 
 // Verifica se o campo possui ao menos um caractere
@@ -96,6 +99,6 @@ bool validEdition(std::string s){
 
 // Verifica se a bibliografia basica possui apenas 1 ou 0
 bool validBool(std::string s){
-	return std::regex_match(s, std::regex("[01]+")) && s.size() == 1;
+	return std::regex_match(s, std::regex("[sSnN]+")) && s.size() == 1;
 }
 
