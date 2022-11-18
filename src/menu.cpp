@@ -44,7 +44,6 @@ bool readOption(char opt, LinkedList* ll, bool* fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 					break;
 				}
-					
 				ll->print();
 				break;
 			case '3':
@@ -52,6 +51,7 @@ bool readOption(char opt, LinkedList* ll, bool* fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 					break;
 				}
+				saveFile(ll);
 				break;
 			case '4':
 				if (!*fileRead){
@@ -60,6 +60,7 @@ bool readOption(char opt, LinkedList* ll, bool* fileRead){
 				}
 				b = readData();
 				ll->insertTail(b);
+				std::cout << "Livro inserido com sucesso!" << std::endl;
 				break;
 			case '5':
 				if (!*fileRead){

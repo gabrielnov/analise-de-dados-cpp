@@ -11,8 +11,6 @@ LinkedList::LinkedList(){
 
 LinkedList::~LinkedList(){
 	clear();
-	qtde = 0;
-	qtdeBrasileiras = 0;
 };
 
 void LinkedList::clear(){
@@ -26,6 +24,8 @@ void LinkedList::clear(){
 		pAnt = nullptr;
 	}
 	head = nullptr;	
+	qtde = 0;
+	qtdeBrasileiras = 0;
 }
 
 bool LinkedList::isEmpty(){

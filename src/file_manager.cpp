@@ -15,17 +15,15 @@ void readFile(LinkedList *ll){
 	getline(f, line);
 	
 	if (f.is_open()){
-	    while(getline(f, line)){
+	    while(getline(f, line) && line != ""){
 	    	
 	    	substring(line, stringArray);
-	    	
+
 	    	Book * b = new Book(stringArray);
 	    	bool nacional = b->verificaNacional(stringArray[5]);
 	    	b->setNacional(nacional);
 	    	
-	    	ll->insertTail(b);
-	    	
-//	    	delete b;			
+	    	ll->insertTail(b);		
 	    }
 	f.close();
 	}
@@ -37,8 +35,35 @@ void readFile(LinkedList *ll){
 }
 
 
-void saveFile(){
+void saveFile(LinkedList *ll){
     
+    std::fstream f;
+	f.open(FILE_PATH, std::ofstream::out | std::ofstream::trunc);	
+	
+	f << "Disciplina;ISBN;Titulo;Autor;Edicao;Cidade;Editora;Ano;Bibliografia basica\n";
+	
+	NodeLL *pAnda;
+	
+    pAnda = ll->getHead();
+    while (pAnda != nullptr){
+      	f << pAnda->getId()->getDisciplina() << ";"
+      		<< pAnda->getId()->getIsbn() << ";"
+      		<< pAnda->getId()->getTitulo() << ";"
+      		<< pAnda->getId()->getAutor() << ";"
+      		<< pAnda->getId()->getEdicao() << ";"
+      		<< pAnda->getId()->getCidade() << ";"
+      		<< pAnda->getId()->getEditora() << ";"
+      		<< pAnda->getId()->getAno() << ";"
+      		<< pAnda->getId()->getBasica() << std::endl;
+        pAnda = pAnda->getProx();
+	}	
+    
+	delete pAnda;
+    pAnda = nullptr;
+    
+    f.close();
+    
+    std::cout << "Dados gravados com sucesso!" << std::endl;
 }
 
 // retorna um array com as 9 colunas do csv

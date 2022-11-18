@@ -13,7 +13,7 @@ const int MAX = 80;
 const std::string FILE_PATH = "bibliografia.csv";
 
 void readFile(LinkedList *ll);
-void saveFile();
+void saveFile(LinkedList *ll);
 void substring(std::string s, std::string* v);
 
 #endif
