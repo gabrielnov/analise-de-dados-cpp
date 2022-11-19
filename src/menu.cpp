@@ -67,8 +67,9 @@ bool readOption(char opt, LinkedList* ll, bool* fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 					break;
 				}
+				std::cin.ignore(256, '\n'); 
 				std::cout << "Insira o titulo ou ISBN do livro a ser removido: ";
-				std::cin >> filter;
+				std::getline(std::cin,filter);
 				if(!ll->remove(filter)){
 					std::cout << "Ocorreu um erro ao tentar remover esse livro. Verifique se ele existe antes de remove-lo" << std::endl;
 				}else{
