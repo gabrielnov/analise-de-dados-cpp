@@ -67,11 +67,12 @@ void analysisC(LinkedList* ll){
 	int totalAno = 0, porcAno;
 	
 	std::cout << "Insira o ano a ser pesquisado: ";
-	std::cin >> ano;
+	getline(std::cin, ano);
+	
 	
 	while(!validYear(ano)){
 		std::cout << "Ano invalido. Digite novamente: ";
-		std::cin >> ano;
+		getline(std::cin, ano);
 	}
 	
 	NodeLL *pAnda;

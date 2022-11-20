@@ -10,7 +10,7 @@
 #include "analysis.h"
 
 void menu(LinkedList* ll);
-Book* readData();
+Book* readData(LinkedList* ll);
 void printMenu();
 bool readOption(char opt, LinkedList* ll, bool* fileRead);
 bool validate(std::string* data);

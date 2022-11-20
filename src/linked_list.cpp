@@ -90,7 +90,7 @@ NodeLL* LinkedList::search(std::string filter){
 		return nullptr;
     }else{
       pAnda = head;
-      while ((pAnda != nullptr) && (pAnda->getId()->getIsbn() != filter) && (pAnda->getId()->getTitulo() != filter))
+      while ((pAnda != nullptr) && (pAnda->getId()->getIsbn() != filter))
         pAnda = pAnda->getProx();
       return pAnda; 
     }

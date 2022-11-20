@@ -58,9 +58,11 @@ bool readOption(char opt, LinkedList* ll, bool* fileRead){
 					std::cout << "Necessario ler os dados primeiro (opcao 1)";
 					break;
 				}
-				b = readData();
-				ll->insertTail(b);
-				std::cout << "Livro inserido com sucesso!" << std::endl;
+				b = readData(ll);
+				if (b != nullptr){
+					ll->insertTail(b);
+					std::cout << "Livro inserido com sucesso!" << std::endl;	
+				}
 				break;
 			case '5':
 				if (!*fileRead){
@@ -106,7 +108,7 @@ bool readOption(char opt, LinkedList* ll, bool* fileRead){
 	return false;
 }
 
-Book* readData(){
+Book* readData(LinkedList* ll){
 	
 	std::string field;
 	
@@ -116,8 +118,14 @@ Book* readData(){
 	
 	Book* b = new Book();
 	
-	input(b);	
+	bool result = input(b, ll);	
 
+	if (!result){
+		delete b;
+		b = nullptr;
+		return nullptr;
+	}
+	
 	return b;	
 }
 

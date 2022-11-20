@@ -1,6 +1,6 @@
 #include "input.h"
 
-void input(Book* b){
+bool input(Book* b, LinkedList* ll){
 	std::cin.ignore(256, '\n'); 
 			
 	std::string field;	
@@ -16,9 +16,14 @@ void input(Book* b){
 		
 	std::cout << "ISBN: ";
 	std::getline(std::cin, field);
-	while (!validString(field)){
-		std::cout << "ISBN \"" << field << "\" invalido. Tente novamente: ";
+	
+	while (!validIsbn(field, ll)){
+		std::cout << "Tente novamente ou digite 0 para sair: ";
 		getline(std::cin, field);
+		
+		if (field == "0"){
+			return false;
+		}
 	}
 	b->setIsbn(field);
 	
@@ -80,6 +85,8 @@ void input(Book* b){
 	
 	bool nacional = b->verificaNacional(b->getCidade());
 	b->setNacional(nacional);
+	
+	return true;
 }
 
 // Verifica se o campo possui ao menos um caractere
@@ -100,5 +107,22 @@ bool validEdition(std::string s){
 // Verifica se a bibliografia basica possui apenas 1 ou 0
 bool validBool(std::string s){
 	return std::regex_match(s, std::regex("[sSnN]+")) && s.size() == 1;
+}
+
+bool validIsbn(std::string s, LinkedList* ll){
+	if (!std::regex_match(s, std::regex("\\d{3}-\\d{10}"))){
+		std::cout << "ISBN deve estar no formato 000-0000000000. ";
+		return false;
+	}
+	
+	// procura pelo isbn, caso exista retorna um erro (nao podem existir isbns repetidos)
+	NodeLL* node = ll->search(s);
+	
+	if (node != nullptr){
+		std::cout << "Ja existe um livro registrado com este ISBN. "; 
+		return false;
+	}
+		
+	return true;
 }
 
