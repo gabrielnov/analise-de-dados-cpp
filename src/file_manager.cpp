@@ -66,7 +66,7 @@ void saveFile(LinkedList *ll){
     std::cout << "Dados gravados com sucesso!" << std::endl;
 }
 
-// retorna um array com as 9 colunas do csv
+// altera o ponteiro para incluir as 9 colunas do csv
 void substring(std::string s, std::string* v){
 	int j = 0;
 	std::string aux;
